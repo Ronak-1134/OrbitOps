@@ -112,7 +112,7 @@ export default function SolarWind() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-void-800 overflow-hidden py-20 px-6 lg:px-10"
+      className="relative w-full min-h-screen bg-void-800 overflow-hidden py-14 px-6 lg:px-10"
     >
       {/* ── Backgrounds */}
       <div className="absolute inset-0 bg-hud-grid pointer-events-none opacity-25"

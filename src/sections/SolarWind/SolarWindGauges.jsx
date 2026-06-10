@@ -1,6 +1,6 @@
 // src/sections/SolarWind/SolarWindGauges.jsx
 import { useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 
 // ── Arc gauge (SVG-based) ─────────────────────────────────────────
@@ -84,15 +84,13 @@ function ArcGauge({ value, min, max, label, unit, color, glow, fmt, dangerZone }
         )}
 
         {/* Value arc */}
-        <motion.path
-          d={arcPath(START, START, R)}
-          fill="none" stroke={color} strokeWidth="6" strokeLinecap="round"
-          filter={`url(#gauge-glow-${label})`}
-          style={{ filter: `drop-shadow(0 0 6px ${glow})` }}
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: pct }}
-          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-        />
+        {pct > 0 && (
+          <path
+            d={arcPath(START, START + pct * SWEEP, R)}
+            fill="none" stroke={color} strokeWidth="6" strokeLinecap="round"
+            style={{ filter: `drop-shadow(0 0 6px ${glow})` }}
+          />
+        )}
 
         {/* Tick marks */}
         {[0, 0.25, 0.5, 0.75, 1].map(t => {

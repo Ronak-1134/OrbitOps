@@ -119,7 +119,7 @@ export default function LaunchSchedule() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-void-900 overflow-hidden py-20 px-6 lg:px-10"
+      className="relative w-full min-h-screen bg-void-900 overflow-hidden py-14 px-6 lg:px-10"
     >
       {/* ── Background */}
       <div className="absolute inset-0 bg-hud-grid pointer-events-none opacity-30"
@@ -162,7 +162,7 @@ export default function LaunchSchedule() {
 
       {/* ── Stat strip */}
       <motion.div
-        className="relative z-10 panel-glass rounded-sm p-3 flex items-center gap-0 overflow-x-auto no-scrollbar mb-8"
+        className="relative z-10 panel-glass rounded-sm p-3 flex items-center gap-0 overflow-x-auto no-scrollbar mb-5"
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
@@ -182,7 +182,7 @@ export default function LaunchSchedule() {
       </motion.div>
 
       {/* ── Next launch hero */}
-      <div className="relative z-10 mb-8">
+      <div className="relative z-10 mb-5">
         <NextLaunchHero launch={next} />
       </div>
 
@@ -190,7 +190,7 @@ export default function LaunchSchedule() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-start">
 
         {/* Left — card grid */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="label-mono text-white/25 mb-4">UPCOMING MANIFEST</div>
           {upcoming.map((l, i) => (
             <LaunchCard key={l.id} launch={l} index={i} />
@@ -204,7 +204,7 @@ export default function LaunchSchedule() {
         </div>
 
         {/* Right — timeline */}
-        <div className="lg:sticky lg:top-6">
+        <div className="hidden lg:block lg:sticky lg:top-6">
           <LaunchTimeline launches={launches} />
         </div>
       </div>

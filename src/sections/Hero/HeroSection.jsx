@@ -45,12 +45,12 @@ export default function HeroSection() {
       />
 
       {/* ── 3D CANVAS ── */}
-      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+      <div className="absolute inset-y-0 right-0 w-full lg:w-3/5" style={{ zIndex: 1 }}>
         <Canvas
           gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
           dpr={[1, 1.5]}
         >
-          <PerspectiveCamera makeDefault position={[0, 0, 2.9]} fov={55} />
+          <PerspectiveCamera makeDefault position={[-0.4, 0, 2.1]} fov={52} />
           <ambientLight intensity={0.0} />
           <Suspense fallback={null}>
             <EarthGlobe />

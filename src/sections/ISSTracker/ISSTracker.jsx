@@ -39,7 +39,7 @@ export default function ISSTracker() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-void-900 overflow-hidden py-20 px-6 lg:px-10"
+      className="relative w-full min-h-screen bg-void-900 overflow-hidden py-14 px-6 lg:px-10"
     >
       {/* ── Background layers */}
       <div className="absolute inset-0 bg-hud-grid pointer-events-none opacity-40"
@@ -79,14 +79,16 @@ export default function ISSTracker() {
       {/* ── 3-column grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-1 lg:grid-cols-[280px_1fr_280px] gap-4"
-        style={{ minHeight: 560, opacity: 0 }}
+        className="grid grid-cols-1 lg:grid-cols-[240px_1fr_240px] gap-4"
+        style={{ minHeight: 300, opacity: 0 }}
       >
         {/* Left — Telemetry */}
-        <ISSTelemetry data={data} loading={loading} error={error} />
+        <div className="hidden lg:block">
+          <ISSTelemetry data={data} loading={loading} error={error} />
+        </div>
 
         {/* Center — World Map */}
-        <div className="relative panel-glass rounded-sm overflow-hidden" style={{ minHeight: 400 }}>
+        <div className="relative panel-glass rounded-sm overflow-hidden" style={{ minHeight: 280 }}>
           <div className="corner-tl" /><div className="corner-tr" />
           <div className="corner-bl" /><div className="corner-br" />
 
@@ -128,7 +130,24 @@ export default function ISSTracker() {
         </div>
 
         {/* Right — Orbit Stats */}
-        <ISSOrbitStats data={data} />
+        <div className="hidden lg:block">
+          <ISSOrbitStats data={data} />
+        </div>
+      </div>
+
+      {/* ── Mobile quick stats (visible only on mobile) */}
+      <div className="lg:hidden mt-4 panel-glass rounded-sm p-3 grid grid-cols-2 gap-3">
+        {[
+          { l:'LATITUDE',  v: data ? `${data.lat.toFixed(2)}°` : '—', c:'#00d4ff' },
+          { l:'LONGITUDE', v: data ? `${data.lon.toFixed(2)}°` : '—', c:'#00d4ff' },
+          { l:'ALTITUDE',  v: data ? `${data.alt.toFixed(1)} KM` : '—', c:'#00e5a0' },
+          { l:'VELOCITY',  v: data ? `${Math.round(data.velocity).toLocaleString()} KM/H` : '—', c:'#f5a623' },
+        ].map(({ l, v, c }) => (
+          <div key={l} className="text-center">
+            <div className="label-mono text-white/20 mb-0.5">{l}</div>
+            <div className="font-mono text-hud-sm tabular-nums" style={{ color: c }}>{v}</div>
+          </div>
+        ))}
       </div>
 
       {/* ── Bottom strip — orbit data bar */}

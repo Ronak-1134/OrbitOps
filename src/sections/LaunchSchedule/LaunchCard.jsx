@@ -34,7 +34,7 @@ export default function LaunchCard({ launch, featured=false, index=0 }) {
       {featured && <><div className="corner-tl"/><div className="corner-tr"/><div className="corner-bl"/><div className="corner-br"/></>}
       {isLive && <motion.div className="absolute inset-0 rounded-sm pointer-events-none" style={{ border:'1px solid rgba(255,61,90,0.5)' }} animate={{ opacity:[0.5,1,0.5] }} transition={{ duration:1.2, repeat:Infinity }} />}
 
-      <div className="p-4">
+      <div className="p-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -63,7 +63,7 @@ export default function LaunchCard({ launch, featured=false, index=0 }) {
           {launch.mission?.type && <MissionTypeBadge type={launch.mission.type} />}
         </div>
 
-        <div className="mt-3 flex items-center justify-between">
+        <div className="mt-2 flex items-center justify-between">
           <CountdownClock net={launch.net} color={status.color} size={featured ? 'large' : 'normal'} />
           <motion.div animate={{ rotate:expanded ? 180 : 0 }} transition={{ duration:0.3 }} className="label-mono text-white/20 hover:text-white/50 transition-colors duration-200 ml-2">▾</motion.div>
         </div>
@@ -72,7 +72,7 @@ export default function LaunchCard({ launch, featured=false, index=0 }) {
       <AnimatePresence initial={false}>
         {expanded && (
           <motion.div initial={{ height:0, opacity:0 }} animate={{ height:'auto', opacity:1 }} exit={{ height:0, opacity:0 }} transition={{ duration:0.35, ease:[0.16,1,0.3,1] }} className="overflow-hidden">
-            <div className="px-4 pb-4 pt-0 border-t border-white/5 space-y-3">
+            <div className="px-3 pb-3 pt-0 border-t border-white/5 space-y-2">
               {launch.mission?.description && <p className="font-body text-hud-base text-white/40 leading-relaxed">{launch.mission.description}</p>}
               <div className="grid grid-cols-3 gap-3">
                 {[{label:'VEHICLE',value:launch.rocket?.family??'—'},{label:'ORBIT',value:orbit},{label:'AGENCY',value:launch.launch_service_provider?.type??'—'}].map(({label,value}) => (

@@ -6,6 +6,7 @@ import CinematicLoader  from '@components/Loader/CinematicLoader'
 import GlobalNav        from '@components/layout/GlobalNav'
 import SectionWrapper   from '@components/layout/SectionWrapper'
 import ScrollProgress   from '@components/ui/ScrollProgress'
+import SectionDivider   from '@components/ui/SectionDivider'
 import HeroSection      from '@sections/Hero/HeroSection'
 import ISSTracker       from '@sections/ISSTracker/ISSTracker'
 import SolarWind        from '@sections/SolarWind/SolarWind'
@@ -35,9 +36,13 @@ export default function App() {
           <GlobalNav />
           <main className="bg-void-950">
             <SectionWrapper id="hero"      label="HERO">       <HeroSection />    </SectionWrapper>
+            <SectionDivider />
             <SectionWrapper id="iss"       label="ISS">        <ISSTracker />     </SectionWrapper>
+            <SectionDivider flip />
             <SectionWrapper id="asteroids" label="ASTEROID">   <AsteroidRadar />  </SectionWrapper>
+            <SectionDivider />
             <SectionWrapper id="solar"     label="SOLAR WIND"> <SolarWind />      </SectionWrapper>
+            <SectionDivider flip />
             <SectionWrapper id="launches"  label="LAUNCHES">   <LaunchSchedule /> </SectionWrapper>
           </main>
           <Footer />

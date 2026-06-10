@@ -69,7 +69,7 @@ export default function AsteroidRadar() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-void-950 overflow-hidden py-20 px-6 lg:px-10"
+      className="relative w-full min-h-screen bg-void-950 overflow-hidden py-14 px-6 lg:px-10"
     >
       {/* ── Background */}
       <div className="absolute inset-0 bg-hud-grid pointer-events-none opacity-30"
@@ -112,12 +112,12 @@ export default function AsteroidRadar() {
       {/* ── MAIN BODY — 3-col */}
       <div
         ref={bodyRef}
-        className="grid grid-cols-1 lg:grid-cols-[300px_1fr_280px] gap-4 items-start"
-        style={{ minHeight: 580, opacity: 0 }}
+        className="grid grid-cols-1 lg:grid-cols-[260px_1fr_260px] gap-4 items-start"
+        style={{ minHeight: 300, opacity: 0 }}
       >
 
         {/* ── LEFT — Threat list */}
-        <div className="panel-glass rounded-sm overflow-hidden"
+        <div className="hidden lg:block panel-glass rounded-sm overflow-hidden"
           style={{ maxHeight: 620, display: 'flex', flexDirection: 'column' }}>
           <div className="corner-tl" /><div className="corner-tr" />
           <div className="corner-bl" /><div className="corner-br" />
@@ -182,7 +182,7 @@ export default function AsteroidRadar() {
 
         {/* ── RIGHT — Detail */}
         <div
-          className="panel-glass rounded-sm overflow-y-auto no-scrollbar"
+          className="hidden lg:block panel-glass rounded-sm overflow-y-auto no-scrollbar"
           style={{ maxHeight: 620 }}
         >
           <div className="corner-tl" /><div className="corner-tr" />
